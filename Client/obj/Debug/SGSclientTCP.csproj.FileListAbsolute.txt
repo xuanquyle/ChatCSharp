@@ -1,0 +1,10 @@
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSclientTCP\SGSclient\bin\Debug\SGSclient.exe
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSclientTCP\SGSclient\bin\Debug\SGSclient.pdb
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclientTCP.csproj.AssemblyReference.cache
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclient.SGSClient.resources
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclient.LoginForm.resources
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclient.Properties.Resources.resources
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclientTCP.csproj.GenerateResource.cache
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclientTCP.csproj.CoreCompileInputs.cache
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclient.exe
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSclientTCP\SGSclient\obj\Debug\SGSclient.pdb

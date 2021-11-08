@@ -1,0 +1,9 @@
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSserverTCP\Server\bin\Debug\Server.exe
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSserverTCP\Server\bin\Debug\Server.pdb
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSserverTCP\Server\obj\Debug\SGSserverTCP.csproj.AssemblyReference.cache
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.SGSserverForm.resources
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.Properties.Resources.resources
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSserverTCP\Server\obj\Debug\SGSserverTCP.csproj.GenerateResource.cache
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSserverTCP\Server\obj\Debug\SGSserverTCP.csproj.CoreCompileInputs.cache
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.exe
+E:\S5\LapTrinhMang\BTL\TCP Chat\SGSserverTCP\Server\obj\Debug\Server.pdb
