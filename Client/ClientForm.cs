@@ -133,6 +133,7 @@ namespace Client
             msgToSend.cmdCommand = Command.List;
             msgToSend.strName = strName;
             msgToSend.strMessage = null;
+            msgToSend.fileName = null;
 
             byteData = msgToSend.ToByte();
 
@@ -173,6 +174,8 @@ namespace Client
                 msgToSend.cmdCommand = Command.Logout;
                 msgToSend.strName = strName;
                 msgToSend.strMessage = null;
+                msgToSend.fileName = null;
+                msgToSend.fileData = null;
 
 
                 byte[] b = msgToSend.ToByte();
@@ -195,10 +198,47 @@ namespace Client
             }
         }
 
+        private void sendFile(String files)
+        {
+            if (files != null && files.Length != 0)
+            {
+                try
+                {
+                    //Fill the info for the message to be send
+                    Data msgToSend = new Data();
+
+                    msgToSend.strName = strName;
+                    msgToSend.fileName = Data.splitPath(files);
+                    msgToSend.fileData = File.ReadAllBytes(files);
+                    msgToSend.strMessage = Data.splitPath(files);
+                    msgToSend.cmdCommand = Command.Message;
+                    //for(int i=0;i<msgToSend.fileData.Length;i++)
+                    //{
+                    //    MessageBox.Show(msgToSend.fileData[i].ToString());
+                    //}
+                    //return;
+                    byte[] byteData = msgToSend.ToByte();
+
+                    //Send it to the server
+                    clientSocket.BeginSend(byteData, 0, byteData.Length, SocketFlags.None, new AsyncCallback(OnSend), null);
+
+                    txtMessage.Text = null;
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show("Unable to send message to the server.", "ClientTCP: " + strName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.ToString());
+                    return;
+                }
+
+            }
+        }
+
         private void txtChatBox_DragDrop(object sender, DragEventArgs e)
         {
 
             String[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            sendFile(files[0]);
 
         }
 
@@ -210,7 +250,37 @@ namespace Client
             }
 
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            txtMessage.Text = null;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                InitialDirectory = @"C:\",
+                Title = "Select file",
+                CheckFileExists = true,
+                CheckPathExists = true,
+
+                DefaultExt = "txt",
+                Filter = "txt files (* .txt) | * .txt | All files (*. *) | *. *",
+                FilterIndex = 2,
+                RestoreDirectory = true,
+
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string path = openFileDialog1.FileName;
+                txtMessage.Text = Data.splitPath(openFileDialog1.FileName);
+                btnSend.Click -= btnSend_Click;
+                btnSend.Click += (s, ev) => sendFile(path);
+                btnSend.Click -= (s, ev) => sendFile(path);
+            }
+        }
     }
+
     //The data structure by which the server and the client interact with 
     //each other
     class Data
@@ -221,6 +291,8 @@ namespace Client
             this.cmdCommand = Command.Null;
             this.strMessage = null;
             this.strName = null;
+            this.fileName = null;
+            this.fileData = null;
         }
 
         //Converts the bytes into an object of type Data
@@ -236,18 +308,37 @@ namespace Client
             //The next four store the length of the message
             int msgLen = BitConverter.ToInt32(data, 8);
 
+            int fNameLen = BitConverter.ToInt32(data, 12);
+
+            int dataLen = BitConverter.ToInt32(data, 16);
+
             //This check makes sure that strName has been passed in the array of bytes
             if (nameLen > 0)
-                this.strName = Encoding.UTF8.GetString(data, 12, nameLen);
+                this.strName = Encoding.UTF8.GetString(data, 20, nameLen);
             else
                 this.strName = null;
 
             //This checks for a null message field
             if (msgLen > 0)
-                this.strMessage = Encoding.UTF8.GetString(data, 12 + nameLen, msgLen);
+                this.strMessage = Encoding.UTF8.GetString(data, 20 + nameLen, msgLen);
             else
                 this.strMessage = null;
 
+            if (fNameLen > 0)
+                this.fileName = Encoding.UTF8.GetString(data, 20 + nameLen + msgLen, fNameLen);
+            else
+                this.fileName = null;
+
+            if (dataLen > 0)
+            {
+                int i = 20 + nameLen + msgLen + fNameLen - 1;
+                fileData = new byte[i + dataLen];
+                Buffer.BlockCopy(data, i, fileData, 0, dataLen);
+                //BinaryWriter bWrite = new BinaryWriter(File.Open(@"D:\\"+this.splitPath(fileName), FileMode.Create));
+                //bWrite.Write(fileData, 0, dataLen);
+            }
+            else
+                this.fileData = null;
         }
 
         //Converts the Data structure into an array of bytes
@@ -270,6 +361,16 @@ namespace Client
             else
                 result.AddRange(BitConverter.GetBytes(0));
 
+            if (fileName != null)
+                result.AddRange(BitConverter.GetBytes(fileName.Length));
+            else
+                result.AddRange(BitConverter.GetBytes(0));
+
+            if (fileData != null)
+                result.AddRange(BitConverter.GetBytes(fileData.Length));
+            else
+                result.AddRange(BitConverter.GetBytes(0));
+
             //Add the name
             if (strName != null)
                 result.AddRange(Encoding.UTF8.GetBytes(strName));
@@ -277,6 +378,13 @@ namespace Client
             //And, lastly we add the message text to our array of bytes
             if (strMessage != null)
                 result.AddRange(Encoding.UTF8.GetBytes(strMessage));
+
+            if (fileName != null)
+            {
+                result.AddRange(Encoding.UTF8.GetBytes(fileName));
+                result.AddRange(fileData);
+            }
+
 
             return result.ToArray();
         }
@@ -291,5 +399,7 @@ namespace Client
         public string strName;      //Name by which the client logs into the room
         public Command cmdCommand;
         public string strMessage;   //Message text  
+        public string fileName;
+        public byte[] fileData = new byte[2 * 1024];
     }
 }
