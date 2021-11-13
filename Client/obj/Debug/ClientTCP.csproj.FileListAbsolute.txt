@@ -28,13 +28,3 @@ E:\S5\LapTrinhMang\BTL\transfer-file\Client\obj\Debug\SGSclient.exe
 E:\S5\LapTrinhMang\BTL\transfer-file\Client\obj\Debug\SGSclient.pdb
 E:\S5\LapTrinhMang\BTL\transfer-file\Client\bin\Debug\SGSclient.exe
 E:\S5\LapTrinhMang\BTL\transfer-file\Client\bin\Debug\SGSclient.pdb
-D:\Recovery\BaiTap\LapTrinhMang\MTL_BTL\chiasefile\Client\bin\Debug\SGSclient.exe
-D:\Recovery\BaiTap\LapTrinhMang\MTL_BTL\chiasefile\Client\bin\Debug\SGSclient.pdb
-D:\Recovery\BaiTap\LapTrinhMang\MTL_BTL\chiasefile\Client\obj\Debug\ClientTCP.csproj.AssemblyReference.cache
-D:\Recovery\BaiTap\LapTrinhMang\MTL_BTL\chiasefile\Client\obj\Debug\Client.Client.resources
-D:\Recovery\BaiTap\LapTrinhMang\MTL_BTL\chiasefile\Client\obj\Debug\Client.LoginForm.resources
-D:\Recovery\BaiTap\LapTrinhMang\MTL_BTL\chiasefile\Client\obj\Debug\SGSclient.Properties.Resources.resources
-D:\Recovery\BaiTap\LapTrinhMang\MTL_BTL\chiasefile\Client\obj\Debug\ClientTCP.csproj.GenerateResource.cache
-D:\Recovery\BaiTap\LapTrinhMang\MTL_BTL\chiasefile\Client\obj\Debug\ClientTCP.csproj.CoreCompileInputs.cache
-D:\Recovery\BaiTap\LapTrinhMang\MTL_BTL\chiasefile\Client\obj\Debug\SGSclient.exe
-D:\Recovery\BaiTap\LapTrinhMang\MTL_BTL\chiasefile\Client\obj\Debug\SGSclient.pdb

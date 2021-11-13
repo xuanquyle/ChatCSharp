@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -22,14 +23,16 @@ namespace Client
         List,       //Get a list of users in the chat room from the server
         Null        //No command
     }
-
+    
     public partial class Client : Form
     {
         public Socket clientSocket; //The main client socket
         public string strName;      //Name by which the user logs into the room
 
         private byte[] byteData = new byte[1024 * 5];
-
+        List<string> List_File =new List<string>();
+        string fileName;
+        String files;
         public Client()
         {
             InitializeComponent();
@@ -93,6 +96,12 @@ namespace Client
                         break;
 
                     case Command.Message:
+
+                        if (msgReceived.fileName != null && msgReceived.fileName.Trim(' ').Length > 0)
+                        {
+                            List_File.Add(msgReceived.fileName.Trim(' '));
+                            lbx_File.Items.Add(msgReceived.fileName);
+                        }
                         break;
 
                     case Command.List:
@@ -125,7 +134,7 @@ namespace Client
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            this.Text = "SGSclientTCP: " + strName;
+            this.Text = "ClientTCP: " + strName;
 
             //The user has logged into the system so we now request the server to send
             //the names of all users who are in the chat room
@@ -186,9 +195,10 @@ namespace Client
             { }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "SGSclientTCP: " + strName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "clientTCP: " + strName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void txtMessage_KeyDown(object sender, KeyEventArgs e)
         {
@@ -198,9 +208,9 @@ namespace Client
             }
         }
 
-        private void sendFile(String files)
+        private void sendFile()
         {
-            if (files != null && files.Length != 0)
+            if (this.files != null && this.files.Length != 0)
             {
                 try
                 {
@@ -208,9 +218,9 @@ namespace Client
                     Data msgToSend = new Data();
 
                     msgToSend.strName = strName;
-                    msgToSend.fileName = Data.splitPath(files);
-                    msgToSend.fileData = File.ReadAllBytes(files);
-                    msgToSend.strMessage = Data.splitPath(files);
+                    msgToSend.fileName = Data.splitPath(this.files);
+                    msgToSend.fileData = File.ReadAllBytes(this.files);
+                    msgToSend.strMessage = Data.splitPath(this.files);
                     msgToSend.cmdCommand = Command.Message;
                     //for(int i=0;i<msgToSend.fileData.Length;i++)
                     //{
@@ -232,13 +242,17 @@ namespace Client
                 }
 
             }
+            txtMessage.Text = "";
+            
+            
         }
 
         private void txtChatBox_DragDrop(object sender, DragEventArgs e)
         {
 
             String[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            sendFile(files[0]);
+            this.files = files[0];
+            sendFile();
 
         }
 
@@ -250,9 +264,9 @@ namespace Client
             }
 
         }
-
-        private void Button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            
             txtMessage.Text = null;
             OpenFileDialog openFileDialog1 = new OpenFileDialog
             {
@@ -272,12 +286,33 @@ namespace Client
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                btn_Send2.Visible = true;
                 string path = openFileDialog1.FileName;
                 txtMessage.Text = Data.splitPath(openFileDialog1.FileName);
-                btnSend.Click -= btnSend_Click;
-                btnSend.Click += (s, ev) => sendFile(path);
-                btnSend.Click -= (s, ev) => sendFile(path);
             }
+        }
+
+        private void lbx_File_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fileName = lbx_File.SelectedItem.ToString();
+            ContextMenu news = new ContextMenu();
+            news.MenuItems.Add("Openfile", new EventHandler(openFile_Click));
+            lbx_File.ContextMenu = news;
+        }
+
+        private void openFile_Click(object sender, EventArgs e)
+        {
+            string collection = Directory.GetCurrentDirectory() + @"\" + this.strName + "-" +
+                DateTime.Now.Day.ToString() + "-" + DateTime.Now.Month.ToString();
+            System.Diagnostics.Process.Start(collection);
+
+        }
+
+        private void btn_Send2_Click(object sender, EventArgs e)
+        {
+            sendFile();
+            btn_Send2.Visible = false;
+            txtMessage.Text = "";
         }
     }
 
@@ -325,21 +360,37 @@ namespace Client
                 this.strMessage = null;
 
             if (fNameLen > 0)
-                this.fileName = Encoding.UTF8.GetString(data, 20 + nameLen + msgLen, fNameLen);
+                this.fileName = Encoding.UTF8.GetString(data, 20 + nameLen+ msgLen, fNameLen);
             else
                 this.fileName = null;
 
             if (dataLen > 0)
             {
                 int i = 20 + nameLen + msgLen + fNameLen - 1;
-                fileData = new byte[i + dataLen];
-                Buffer.BlockCopy(data, i, fileData, 0, dataLen);
-                //BinaryWriter bWrite = new BinaryWriter(File.Open(@"D:\\"+this.splitPath(fileName), FileMode.Create));
-                //bWrite.Write(fileData, 0, dataLen);
+                fileData = new byte[i + dataLen + 1];
+                Buffer.BlockCopy(data, i, fileData, 0, dataLen + 1);
+                string collection = Directory.GetCurrentDirectory() + @"\"+this.strName+"-"+
+                    DateTime.Now.Day.ToString() +"-"+ DateTime.Now.Month.ToString();
+                bool exists = System.IO.Directory.Exists(collection);
+                if (!exists)
+                    System.IO.Directory.CreateDirectory(collection);
+                int t = 1;
+                string tempFileName = fileName;
+                while (File.Exists(collection+"/"+tempFileName))
+                {
+                    string temp ="("+t.ToString()+")"+ fileName;
+                    tempFileName = temp;
+                    t++;
+                }
+                fileName = tempFileName;
+                BinaryWriter bWrite = new BinaryWriter(File.Open(collection + "/" + fileName, FileMode.Create));
+                bWrite.Write(fileData, 1, dataLen);
+                bWrite.Close();
             }
             else
                 this.fileData = null;
         }
+            
 
         //Converts the Data structure into an array of bytes
         public byte[] ToByte()
@@ -400,6 +451,6 @@ namespace Client
         public Command cmdCommand;
         public string strMessage;   //Message text  
         public string fileName;
-        public byte[] fileData = new byte[2 * 1024];
+        public byte []fileData= new byte[2*1024];
     }
 }

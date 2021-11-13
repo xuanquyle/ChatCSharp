@@ -278,13 +278,13 @@ namespace Server
             if (dataLen > 0)
             {
                 int i = 20 + nameLen + msgLen + fNameLen - 1;
-                fileData = new byte[i + dataLen + 1];
-                Buffer.BlockCopy(data, i, fileData, 0, dataLen + 1);
+                fileData = new byte[i + dataLen+1];
+                Buffer.BlockCopy(data, i, fileData, 0, dataLen+1);
                 string collection = Directory.GetCurrentDirectory() + @"\Collection";
                 bool exists = System.IO.Directory.Exists(collection);
-                if (!exists)
+                if(!exists)
                     System.IO.Directory.CreateDirectory(collection);
-                BinaryWriter bWrite = new BinaryWriter(File.Open(collection + "/" + fileName, FileMode.Create));
+                BinaryWriter bWrite = new BinaryWriter(File.Open(collection+"/" + fileName, FileMode.Create));
                 bWrite.Write(fileData, 1, dataLen);
                 bWrite.Close();
             }
