@@ -42,15 +42,19 @@ namespace Client
             // 
             // btnSend
             // 
+            this.btnSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             resources.ApplyResources(this.btnSend, "btnSend");
+            this.btnSend.ForeColor = System.Drawing.Color.White;
             this.btnSend.Name = "btnSend";
-            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.UseVisualStyleBackColor = false;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // txtChatBox
             // 
             this.txtChatBox.AllowDrop = true;
             this.txtChatBox.BackColor = System.Drawing.SystemColors.Window;
+            this.txtChatBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtChatBox.ForeColor = System.Drawing.Color.MidnightBlue;
             resources.ApplyResources(this.txtChatBox, "txtChatBox");
             this.txtChatBox.Name = "txtChatBox";
             this.txtChatBox.ReadOnly = true;
@@ -67,24 +71,31 @@ namespace Client
             // 
             // lstChatters
             // 
+            this.lstChatters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lstChatters.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lstChatters.FormattingEnabled = true;
             resources.ApplyResources(this.lstChatters, "lstChatters");
             this.lstChatters.Name = "lstChatters";
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             resources.ApplyResources(this.button1, "button1");
+            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
+            this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label1.Name = "label1";
             // 
             // lbx_File
             // 
+            this.lbx_File.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbx_File.ForeColor = System.Drawing.Color.MidnightBlue;
             this.lbx_File.FormattingEnabled = true;
             resources.ApplyResources(this.lbx_File, "lbx_File");
             this.lbx_File.Name = "lbx_File";
@@ -93,19 +104,23 @@ namespace Client
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
+            this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label2.Name = "label2";
             // 
             // btn_Send2
             // 
+            this.btn_Send2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             resources.ApplyResources(this.btn_Send2, "btn_Send2");
+            this.btn_Send2.ForeColor = System.Drawing.Color.White;
             this.btn_Send2.Name = "btn_Send2";
-            this.btn_Send2.UseVisualStyleBackColor = true;
+            this.btn_Send2.UseVisualStyleBackColor = false;
             this.btn_Send2.Click += new System.EventHandler(this.btn_Send2_Click);
             // 
             // Client
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btn_Send2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbx_File);

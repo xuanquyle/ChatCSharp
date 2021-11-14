@@ -46,7 +46,6 @@ namespace Server
             clientList = new ArrayList();
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {            
             try
@@ -57,7 +56,7 @@ namespace Server
                                           ProtocolType.Tcp);
                 
                 //Assign the any IP of the machine and listen on port number 1000
-                IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, 1000);
+                IPEndPoint ipEndPoint = new IPEndPoint(IPAddress.Any, 9999);
 
                 //Bind and listen on the given address
                 serverSocket.Bind(ipEndPoint);

@@ -27,8 +27,8 @@ namespace Client
                 clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
                 IPAddress ipAddress = IPAddress.Parse(txtServerIP.Text);
-                //Server is listening on port 1000
-                IPEndPoint ipEndPoint = new IPEndPoint(ipAddress, 1000);
+                //Server is listening on port 9999
+                IPEndPoint ipEndPoint = new IPEndPoint(ipAddress, 9999);
 
                 //Connect to the server
                 clientSocket.BeginConnect(ipEndPoint, new AsyncCallback(OnConnect), null);

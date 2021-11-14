@@ -34,8 +34,9 @@ namespace Server
             // txtLog
             // 
             this.txtLog.BackColor = System.Drawing.SystemColors.Window;
+            this.txtLog.ForeColor = System.Drawing.Color.MidnightBlue;
             this.txtLog.Location = new System.Drawing.Point(17, 15);
-            this.txtLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLog.Margin = new System.Windows.Forms.Padding(4);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ReadOnly = true;
@@ -50,7 +51,7 @@ namespace Server
             this.ClientSize = new System.Drawing.Size(389, 327);
             this.Controls.Add(this.txtLog);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "ServerForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

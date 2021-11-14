@@ -28,6 +28,7 @@ namespace Client
     {
         public Socket clientSocket; //The main client socket
         public string strName;      //Name by which the user logs into the room
+        public static string userName;
 
         private byte[] byteData = new byte[1024 * 5];
         List<string> List_File =new List<string>();
@@ -73,7 +74,7 @@ namespace Client
             { }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "SGSclientTCP: " + strName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ClientTCP: " + strName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -127,20 +128,21 @@ namespace Client
             { }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "SGSclientTCP: " + strName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ClientTCP: " + strName, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            this.Text = "ClientTCP: " + strName;
+            this.Text = strName;
 
             //The user has logged into the system so we now request the server to send
             //the names of all users who are in the chat room
             Data msgToSend = new Data();
             msgToSend.cmdCommand = Command.List;
             msgToSend.strName = strName;
+            userName = strName;
             msgToSend.strMessage = null;
             msgToSend.fileName = null;
 
@@ -169,7 +171,7 @@ namespace Client
 
         private void SGSClient_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to leave the chat room?", "SGSclient: " + strName,
+            if (MessageBox.Show("Are you sure you want to leave the chat room?", "Client: " + strName,
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
             {
                 e.Cancel = true;
@@ -242,9 +244,7 @@ namespace Client
                 }
 
             }
-            txtMessage.Text = "";
-            
-            
+            txtMessage.Text = "";           
         }
 
         private void txtChatBox_DragDrop(object sender, DragEventArgs e)
@@ -286,18 +286,23 @@ namespace Client
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                btn_Send2.Visible = true;
-                string path = openFileDialog1.FileName;
                 txtMessage.Text = Data.splitPath(openFileDialog1.FileName);
+                btn_Send2.Visible = true;
+                this.files = openFileDialog1.FileName;
             }
         }
 
         private void lbx_File_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fileName = lbx_File.SelectedItem.ToString();
-            ContextMenu news = new ContextMenu();
-            news.MenuItems.Add("Openfile", new EventHandler(openFile_Click));
-            lbx_File.ContextMenu = news;
+            if(lbx_File.SelectedItem!=null)
+            {
+                fileName = lbx_File.SelectedItem.ToString();
+                ContextMenu news = new ContextMenu();
+                news.MenuItems.Add("Openfile", new EventHandler(openFile_Click));
+                lbx_File.ContextMenu = news;
+
+            }
+            
         }
 
         private void openFile_Click(object sender, EventArgs e)
@@ -369,7 +374,7 @@ namespace Client
                 int i = 20 + nameLen + msgLen + fNameLen - 1;
                 fileData = new byte[i + dataLen + 1];
                 Buffer.BlockCopy(data, i, fileData, 0, dataLen + 1);
-                string collection = Directory.GetCurrentDirectory() + @"\"+this.strName+"-"+
+                string collection = Directory.GetCurrentDirectory() + @"\"+ Client.userName +"-"+
                     DateTime.Now.Day.ToString() +"-"+ DateTime.Now.Month.ToString();
                 bool exists = System.IO.Directory.Exists(collection);
                 if (!exists)
