@@ -212,8 +212,10 @@ namespace Client
 
         private void sendFile()
         {
-            if (this.files != null && this.files.Length != 0)
+                          
+            if (this.files != null && new FileInfo(this.files).Length != 0)
             {
+
                 try
                 {
                     //Fill the info for the message to be send
@@ -244,12 +246,15 @@ namespace Client
                 }
 
             }
+            else
+            {
+                MessageBox.Show("File is null. Please check again!!");
+            }
             txtMessage.Text = "";           
         }
 
         private void txtChatBox_DragDrop(object sender, DragEventArgs e)
         {
-
             String[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             this.files = files[0];
             sendFile();
@@ -289,6 +294,7 @@ namespace Client
                 txtMessage.Text = Data.splitPath(openFileDialog1.FileName);
                 btn_Send2.Visible = true;
                 this.files = openFileDialog1.FileName;
+
             }
         }
 
@@ -363,12 +369,12 @@ namespace Client
                 this.strMessage = Encoding.UTF8.GetString(data, 20 + nameLen, msgLen);
             else
                 this.strMessage = null;
-
+            //This checks for a null file field
             if (fNameLen > 0)
                 this.fileName = Encoding.UTF8.GetString(data, 20 + nameLen+ msgLen, fNameLen);
             else
                 this.fileName = null;
-
+            //This checks for a null file field
             if (dataLen > 0)
             {
                 int i = 20 + nameLen + msgLen + fNameLen - 1;

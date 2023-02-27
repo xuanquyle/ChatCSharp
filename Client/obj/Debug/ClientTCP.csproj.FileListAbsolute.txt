@@ -38,3 +38,23 @@ D:\Recovery\BaiTap\LapTrinhMang\transfer-file -cuoi\transfer-file\Client\obj\Deb
 D:\Recovery\BaiTap\LapTrinhMang\transfer-file -cuoi\transfer-file\Client\obj\Debug\ClientTCP.csproj.CoreCompileInputs.cache
 D:\Recovery\BaiTap\LapTrinhMang\transfer-file -cuoi\transfer-file\Client\obj\Debug\SGSclient.exe
 D:\Recovery\BaiTap\LapTrinhMang\transfer-file -cuoi\transfer-file\Client\obj\Debug\SGSclient.pdb
+E:\S5\LapTrinhMang\BTL\chiasefile\Client\bin\Debug\SGSclient.exe
+E:\S5\LapTrinhMang\BTL\chiasefile\Client\bin\Debug\SGSclient.pdb
+E:\S5\LapTrinhMang\BTL\chiasefile\Client\obj\Debug\ClientTCP.csproj.AssemblyReference.cache
+E:\S5\LapTrinhMang\BTL\chiasefile\Client\obj\Debug\Client.Client.resources
+E:\S5\LapTrinhMang\BTL\chiasefile\Client\obj\Debug\Client.LoginForm.resources
+E:\S5\LapTrinhMang\BTL\chiasefile\Client\obj\Debug\SGSclient.Properties.Resources.resources
+E:\S5\LapTrinhMang\BTL\chiasefile\Client\obj\Debug\ClientTCP.csproj.GenerateResource.cache
+E:\S5\LapTrinhMang\BTL\chiasefile\Client\obj\Debug\ClientTCP.csproj.CoreCompileInputs.cache
+E:\S5\LapTrinhMang\BTL\chiasefile\Client\obj\Debug\SGSclient.exe
+E:\S5\LapTrinhMang\BTL\chiasefile\Client\obj\Debug\SGSclient.pdb
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Client\bin\Debug\SGSclient.exe
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Client\bin\Debug\SGSclient.pdb
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Client\obj\Debug\ClientTCP.csproj.AssemblyReference.cache
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Client\obj\Debug\Client.Client.resources
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Client\obj\Debug\Client.LoginForm.resources
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Client\obj\Debug\SGSclient.Properties.Resources.resources
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Client\obj\Debug\ClientTCP.csproj.GenerateResource.cache
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Client\obj\Debug\ClientTCP.csproj.CoreCompileInputs.cache
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Client\obj\Debug\SGSclient.exe
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Client\obj\Debug\SGSclient.pdb

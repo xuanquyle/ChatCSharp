@@ -73,7 +73,7 @@ namespace Client
             }
             catch (Exception ex)
             { 
-                MessageBox.Show(ex.Message, "SGSclient", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                MessageBox.Show(ex.Message, "Client", MessageBoxButtons.OK, MessageBoxIcon.Error); 
             }
         }
 

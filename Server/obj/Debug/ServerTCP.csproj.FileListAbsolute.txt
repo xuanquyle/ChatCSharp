@@ -25,3 +25,21 @@ D:\Recovery\BaiTap\LapTrinhMang\transfer-file -cuoi\transfer-file\Server\obj\Deb
 D:\Recovery\BaiTap\LapTrinhMang\transfer-file -cuoi\transfer-file\Server\obj\Debug\ServerTCP.csproj.CoreCompileInputs.cache
 D:\Recovery\BaiTap\LapTrinhMang\transfer-file -cuoi\transfer-file\Server\obj\Debug\Server.exe
 D:\Recovery\BaiTap\LapTrinhMang\transfer-file -cuoi\transfer-file\Server\obj\Debug\Server.pdb
+E:\S5\LapTrinhMang\BTL\chiasefile\Server\bin\Debug\Server.exe
+E:\S5\LapTrinhMang\BTL\chiasefile\Server\bin\Debug\Server.pdb
+E:\S5\LapTrinhMang\BTL\chiasefile\Server\obj\Debug\ServerTCP.csproj.AssemblyReference.cache
+E:\S5\LapTrinhMang\BTL\chiasefile\Server\obj\Debug\Server.ServerForm.resources
+E:\S5\LapTrinhMang\BTL\chiasefile\Server\obj\Debug\Server.Properties.Resources.resources
+E:\S5\LapTrinhMang\BTL\chiasefile\Server\obj\Debug\ServerTCP.csproj.GenerateResource.cache
+E:\S5\LapTrinhMang\BTL\chiasefile\Server\obj\Debug\ServerTCP.csproj.CoreCompileInputs.cache
+E:\S5\LapTrinhMang\BTL\chiasefile\Server\obj\Debug\Server.exe
+E:\S5\LapTrinhMang\BTL\chiasefile\Server\obj\Debug\Server.pdb
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Server\bin\Debug\Server.exe
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Server\bin\Debug\Server.pdb
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Server\obj\Debug\ServerTCP.csproj.AssemblyReference.cache
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Server\obj\Debug\Server.ServerForm.resources
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Server\obj\Debug\Server.Properties.Resources.resources
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Server\obj\Debug\ServerTCP.csproj.GenerateResource.cache
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Server\obj\Debug\ServerTCP.csproj.CoreCompileInputs.cache
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Server\obj\Debug\Server.exe
+E:\S5\LapTrinhMang\BTL\19_BaiTapNhom_FullCode\Server\obj\Debug\Server.pdb
